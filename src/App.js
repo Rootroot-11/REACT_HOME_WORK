@@ -1,16 +1,5 @@
 import {useReducer} from "react";
-
-const reducer = (state, action) => {
-    if (action.obj === '1' && action.diya === '+') {
-        return {...state, a: state.a++}
-    } else if (action.obj === '1' && action.diya === '-') {
-        return {...state, a: state.a--}
-    } else if (action.obj === '2' && action.diya === '+') {
-        return {...state, b: state.b++}
-    } else if (action.obj === '2' && action.diya === '-') {
-        return {...state, b: state.b--}
-    }
-}
+import reducer from "./reducers/Reducer";
 
 export default function App() {
     let [{a, b}, dispatch] = useReducer(reducer, {a: 0, b: 0});
