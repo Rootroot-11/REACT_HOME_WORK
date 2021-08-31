@@ -7,7 +7,7 @@ import UserDetails from "../userdetails/UserDetails";
 
 export default function Users(props) {
     let {match:{url}, history} = props;
-    let [users, setUsers] = useState([]);
+    const [users, setUsers] = useState([]);
     useEffect(()=>{
         getUsers().then(value => setUsers([...value]))
     },[]);

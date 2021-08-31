@@ -6,7 +6,7 @@ import PostDetails from "../PostDetails/PostDetails";
 
 export default function Posts(props) {
     let {match: {url}, history} = props;
-    let [posts, setPosts] = useState([]);
+    const [posts, setPosts] = useState([]);
     useEffect(() =>{
         getPosts().then(value => setPosts([...value]))
     },[]);
