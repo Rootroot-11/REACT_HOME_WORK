@@ -1,9 +1,7 @@
-import {useParams} from "react-router";
-import {useEffect, useState} from "react";
-import {getUser} from "../../services/users.api";
+import { useEffect, useState } from "react";
+import { getUser } from "../../services/users.api";
 
-export default function UserDetails({history, match:{params:{id}}}) {
-    //let {id} = useParams('id');
+export default function UserDetails({ match: { params:{ id } } } ){
 
     const [user, setUser] = useState({});
   useEffect(()=>{
@@ -15,4 +13,5 @@ export default function UserDetails({history, match:{params:{id}}}) {
             {JSON.stringify(user)}
         </div>
     );
+
 }
