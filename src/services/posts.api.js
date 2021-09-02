@@ -1,4 +1,4 @@
-let url = 'https://jsonplaceholder.typicode.com/posts';
+const url = 'https://jsonplaceholder.typicode.com/posts';
 
 const getPosts = () => {
     return fetch(url)
