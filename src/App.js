@@ -4,11 +4,11 @@
 // одна кнопка збільшує значення , інша зменшує
 // логіку реалізувати через reducer
 
-import {useReducer} from "react";
+import { useReducer } from "react";
 import reducer from "./reducers/Reducer";
 
 export default function App() {
-    let [{a, b, c}, dispatch] = useReducer(reducer, {a: 0, b: 0, c: 0});
+    let [{ a, b, c }, dispatch] = useReducer(reducer, { a: 0, b: 0, c: 0 });
     return (
         <div>
             <h1>state 1 - {a}</h1>
@@ -22,4 +22,5 @@ export default function App() {
             <button onClick={() => dispatch({obj: '3', diya: '-'})}>dec</button>
         </div>
     );
+
 }
