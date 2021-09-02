@@ -1,16 +1,11 @@
-import {useEffect, useState} from "react";
-import {getPost} from "../../services/posts.api";
+import { useLocation } from "react-router";
 
-export default function PostDetails({history, match:{params:{id}}}) {
+export default function PostDetails() {
+  const {state} = useLocation();
 
-        const [post, setPost] = useState({});
-
-        useEffect(() =>{
-            getPost(id).then(value => setPost({...value}))
-        },[id]);
   return (
     <div>
-        {JSON.stringify(post)}
+        {JSON.stringify(state)}
     </div>
   );
 }
