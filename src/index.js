@@ -1,14 +1,17 @@
 import {createStore} from "redux";
 import reportWebVitals from './reportWebVitals';
 import {Provider} from "react-redux";
+import React from 'react';
+import ReactDOM from 'react-dom';
+import App from './App';
 
-let initialState = {users: []}
+let initialState = {movies: []};
 const rootReducer = (state = initialState, action) => {
+   // console.log('reducer', state)
     switch (action.type) {
         case "FETCH_MOVIES":
-            return {...state};
-        case "FETCH_GENRES":
-            return {...state};
+            console.log('case 1', action.payload);
+            return {...state, movies: [...action.payload]};
         default:
             return state;
     }

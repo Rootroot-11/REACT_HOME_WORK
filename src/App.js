@@ -1,18 +1,22 @@
 import {useEffect} from "react";
 import {discoverMovie} from "./service.api/movieService";
-import {useSelector} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 
 export default function App() {
     let state = useSelector(state => state);
-    console.log('app',state)
+    let dispatch = useDispatch();
     let {movies} = state;
-    console.log(movies);
-    useEffect(() => {
-discoverMovie().then(value => console.log(value.data.results))
-    },[])
+
+    useEffect((id) => {
+        discoverMovie().then(value => {
+            dispatch({type: 'FETCH_MOVIES', payload: movies});
+            console.log(value.data.result)
+        });
+    }, [])
     return (
         <div>
-
+            {
+               movies.map((value) => <div>{movies.name}</div>)}
         </div>
     );
 }
