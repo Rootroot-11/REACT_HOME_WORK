@@ -5,18 +5,22 @@ import {useDispatch, useSelector} from "react-redux";
 export default function App() {
     let state = useSelector(state => state);
     let dispatch = useDispatch();
-    let {movies} = state;
+    let {users} = state;
+    console.log(users)
 
-    useEffect((id) => {
-        discoverMovie().then(value => {
-            dispatch({type: 'FETCH_MOVIES', payload: movies});
-            console.log(value.data.result)
-        });
-    }, [])
+ useEffect(()=>{
+     discoverMovie().then(value => console.log(value.data.results))
+ },[])
     return (
         <div>
             {
-               movies.map((value) => <div>{movies.name}</div>)}
+               users.map(results => <div>
+                   <h3>id:</h3> {results.id}
+                   <h3>original title:</h3> {results.original_title}
+
+
+               </div>)
+            }
         </div>
     );
 }
