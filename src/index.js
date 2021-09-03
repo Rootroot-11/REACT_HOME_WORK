@@ -7,20 +7,23 @@ const rootReducer = (state = initialState, action) => {
     switch (action.type) {
         case "FETCH_MOVIES":
             return {...state};
+        case "FETCH_GENRES":
+            return {...state};
         default:
             return state;
     }
 }
 
 export let store = createStore(rootReducer);
-ReactDOM.render(
-  <React.StrictMode>
-      <Provider store={store}>
-          <App />
-      </Provider>
 
-  </React.StrictMode>,
-  document.getElementById('root')
+ReactDOM.render(
+    <React.StrictMode>
+        <Provider store={store}>
+            <App/>
+        </Provider>
+
+    </React.StrictMode>,
+    document.getElementById('root')
 );
 
 // If you want to start measuring performance in your app, pass a function
