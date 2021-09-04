@@ -5,11 +5,10 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
 
-let initialState = {users: []};
-const rootReducer = (state = initialState, action) => {
-   // console.log('reducer', state)
+
+const rootReducer = (state = {users: []}, action) => {
     switch (action.type) {
-        case "FETCH_MOVIES":
+        case "FETCH_USERS":
             console.log('case 1', action.payload);
             return {...state, users: [...action.payload]};
         default:
