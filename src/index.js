@@ -1,22 +1,10 @@
-import {createStore} from "redux";
 import reportWebVitals from './reportWebVitals';
 import {Provider} from "react-redux";
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
+import {store} from "./redux/store/store";
 
-
-const rootReducer = (state = {users: []}, action) => {
-    switch (action.type) {
-        case "FETCH_USERS":
-            console.log('case 1', action.payload);
-            return {...state, users: [...action.payload]};
-        default:
-            return state;
-    }
-}
-
-export let store = createStore(rootReducer);
 
 ReactDOM.render(
     <React.StrictMode>

@@ -1,6 +1,7 @@
 import {useEffect} from "react";
 import {discoverMovie} from "./services/service.api/movieService";
 import {useDispatch, useSelector} from "react-redux";
+import {fetchUsers} from "./redux/actions/actions";
 
 export default function App() {
     let state = useSelector(state => state);
@@ -9,7 +10,7 @@ export default function App() {
 
     useEffect(() => {
         discoverMovie().then(value => {
-            dispatch({type: "FETCH_USERS", payload: value.data.results});
+            dispatch(fetchUsers(value));
         });
     }, [])
     return (
@@ -24,9 +25,9 @@ export default function App() {
                     <h3>Release date</h3> {value.release_date}
                     <img src={`https://image.tmdb.org/t/p/w200${value.poster_path}`} alt={`${value.original_title}`}/>
 
-                    genres.map((value) => <div>{value.id}</div>)
                     <hr/>
                     <br/>
+
                 </div>)
             }
         </div>
