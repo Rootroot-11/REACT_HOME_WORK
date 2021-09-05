@@ -1,18 +1,26 @@
 import {useEffect} from "react";
-import {discoverMovie} from "./services/service.api/movieService";
+import {discoverGenre, discoverMovie} from "./services/service.api/movieService";
 import {useDispatch, useSelector} from "react-redux";
-import {fetchUsers} from "./redux/actions/actions";
+import {fetchGenres, fetchUsers} from "./redux/actions/actions";
+
 
 export default function App() {
     let state = useSelector(state => state);
     let dispatch = useDispatch();
-    let {users} = state;
+    let{users} = state;
 
     useEffect(() => {
         discoverMovie().then(value => {
             dispatch(fetchUsers(value));
         });
     }, [])
+
+    useEffect(() => {
+        discoverMovie().then(value => {
+            dispatch(fetchGenres(value));
+        });
+    }, [])
+
     return (
         <div>
             {
@@ -25,11 +33,14 @@ export default function App() {
                     <h3>Release date</h3> {value.release_date}
                     <img src={`https://image.tmdb.org/t/p/w200${value.poster_path}`} alt={`${value.original_title}`}/>
 
+
+                    <h3>Genres</h3> {value.genre_ids}
                     <hr/>
                     <br/>
 
                 </div>)
             }
+
         </div>
     );
 }
