@@ -1,7 +1,8 @@
 import {useEffect} from "react";
-import {discoverGenre, discoverMovie} from "./services/service.api/movieService";
+import {discoverMovie} from "./services/service.api/movieService";
 import {useDispatch, useSelector} from "react-redux";
 import {fetchGenres, fetchUsers} from "./redux/actions/actions";
+import GenreBadge from "./genres/Genres";
 
 
 export default function App() {
@@ -40,6 +41,7 @@ export default function App() {
 
                 </div>)
             }
+            {<GenreBadge/>}
 
         </div>
     );
