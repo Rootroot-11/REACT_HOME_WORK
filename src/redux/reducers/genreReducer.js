@@ -1,11 +1,11 @@
-let genresState = {
-    genres: null
-};
+import {FETCHING_GENRES} from "../actions/actionTypes";
 
-const genresReducer = (state=genresState, action) => {
-    switch (action.type){
+
+export const genresReducer = (state = {genres: []}, action) => {
+    switch (action.type) {
         case FETCHING_GENRES:
-            return{...state, genres: [...action.payload.genres]}
+            console.log('case 2', action.payload)
+            return {...state, genres: [...action.payload.genres]};
         default:
             return state;
     }

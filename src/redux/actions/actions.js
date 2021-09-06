@@ -1,13 +1,11 @@
-import {FETCH_GENRES, FETCH_USERS, FETCHING_GENRES} from "./actionTypes";
+import {FETCH_USERS, FETCHING_GENRES} from "./actionTypes";
 
 const fetchUsers = (value) => {
-    return {type: FETCH_USERS, payload: value.data.results}
-}
-const fetchGenres = (value) => {
-    return {type: FETCH_GENRES, payload: value.data.results}
+    return {type: FETCH_USERS, payload: value}
 }
 
 const fetchingGenres = (value) => {
-    return {type: FETCHING_GENRES, payload: value.data.results}
+    return {type: FETCHING_GENRES, payload: value}
 }
-export {fetchUsers, fetchGenres, fetchingGenres};
+export {fetchUsers, fetchingGenres};
+

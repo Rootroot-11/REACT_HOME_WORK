@@ -1,0 +1,10 @@
+.App {
+    background-image: url('https://prodengiblog.ru/wp-content/uploads/2016/05/1.jpg');
+    color: white;
+    padding-top: 20px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    margin: 15px ;
+
+}
+
