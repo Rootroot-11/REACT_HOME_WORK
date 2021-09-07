@@ -12,7 +12,6 @@ export default function Movies() {
     let {genres} = useSelector(({genresReducer}) => genresReducer);
     const dispatch = useDispatch();
 
-    document.body.style.backgroundImage = `url("https://st.depositphotos.com/2371801/2999/i/950/depositphotos_29990939-stock-photo-watercolor-leaves-seamless-autumn-background.jpg")`;
 
     useEffect(() => {
         if (fetching) {

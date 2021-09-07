@@ -1,24 +1,20 @@
-import {useSelector} from "react-redux";
+
 import {Link, Route} from "react-router-dom";
 import MovieDetails from "../Movie_Details/MovieDetails";
 
-export const Movie = ({item, history}) => {
+export const Movie = ({item, history, value}) => {
 
     let navigate = () => {
-        history.push('/users/' + item.id, item)
+        history.push('/users/' + item.id, value)
     };
-
-    // const {genres} = useSelector(({genresReducer}) => genresReducer)
-
-
 
     return (
         <div className={'Movie'}>
             <div className={'Movie-box'}>
-                {item.id} {item.title} - <Link to={{pathname: '/posts/' + item.id, state: item}}>post static details</Link>
-                <button onClick={navigate}>user details programmaticly</button>
 
-                <Route path={'/movies/' + item.id} component={MovieDetails}/>
+                <Link to={{pathname: '/movies/' + value.id}}><h3>{value.title}</h3></Link>
+
+                {/*<Route path={'/movies/' + item.id} component={MovieDetails}/>*/}
             </div>
         </div>
     )

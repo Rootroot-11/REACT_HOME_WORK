@@ -9,7 +9,7 @@ const instance = axios.create({
 
 const discoverMovie = async () => await instance.get('discover/movie');
 const discoverGenre = async () => await instance.get('genre/movie/list');
-const getMovieByid = (movieId) => instance.get(`/movie/${movieId}`);
+const getMovieByid = async (movieId) => await instance.get(`/movie/${movieId}`);
 
 
 export {discoverMovie, discoverGenre, getMovieByid};

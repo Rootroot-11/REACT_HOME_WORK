@@ -3,16 +3,18 @@ import {discoverGenre, discoverMovie} from "./services/service.api/movieService"
 import {useDispatch, useSelector} from "react-redux";
 import {fetchingGenres, fetchUsers} from "./redux/actions/actions";
 import {
-    BrowserRouter as Router, Link,
+    BrowserRouter as Router,
     Route, Switch
 } from "react-router-dom";
 
-import {Movie} from "./components/Movie/Movie";
 import Movies from "./components/MoviesPage/Movies";
+import MovieDetails from "./components/Movie_Details/MovieDetails";
+import {Redirect} from "react-router";
+import {Movie} from "./components/Movie/Movie";
 
 // import './App.css'
 
-export default function App({value}) {
+export default function App({value, history}) {
     const [currentPage, setCurrentPage] = useState(1);
     const [fetching, setFetching] = useState(true)
 
@@ -46,9 +48,13 @@ export default function App({value}) {
             discoverGenre().then(value => dispatch(fetchingGenres(value.data)))
         }
     }, [dispatch, fetching, genres]);
+    let navigate = () => {
+        history.push('/users/' + value.id, value)
+    };
     return (
         <Router>
             <div>
+
                 {
                     users.map(value => <div key={value.id}>
                         <h3>ID</h3> {value.id}
@@ -60,11 +66,13 @@ export default function App({value}) {
                         <img src={`https://image.tmdb.org/t/p/w200${value.poster_path}`}
                              alt={`${value.original_title}`}/>
                         <h3>Genres</h3> {value.genre_ids}
-
+                        <br/>
+                        <br/>
+                        <button onClick={navigate}>Movie info</button>
                         <hr/>
                         <br/>
-                    </div>)
-                }
+                    </div>)}
+
                 <div>
                     Genres of Movies:
                     {
@@ -73,20 +81,13 @@ export default function App({value}) {
                     }
                 </div>
 
-
+                <Switch>
+                    <Route exact path={'/movies/:id'} component={MovieDetails}/>
+                    <Route exact path={'/movies'} component={Movies}/>
+                    <Redirect exact to="/movies"/>
+                </Switch>
             </div>
-            <Switch>
-
-                <Link to={{pathname: '/movies/'}}><h2>{value}</h2></Link>
-                <Route path={'/movies/'} component = {Movies}/>
-
-                <Link to={{pathname: '/movie'}}><h2>{value}</h2></Link>
-                <Route path={'/movie'} component={Movie}/>
-
-            </Switch>
-
 
         </Router>
-
-    );
+    )
 }
