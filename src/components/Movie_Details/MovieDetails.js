@@ -1,7 +1,8 @@
 import {useEffect, useState} from "react";
+import {useLocation} from "react-router";
 
 export default function MovieDetails ({ match: { params:{ id } } })  {
-
+    // const {state} = useLocation();
     const [user, setUser] = useState({});
     useEffect(()=>{
         getUser(id).then(value => setUser({...value}));
@@ -11,6 +12,7 @@ export default function MovieDetails ({ match: { params:{ id } } })  {
         <div>
 
             {JSON.stringify(user)}
+            {/*{JSON.stringify(state)}*/}
 
         </div>
     );
