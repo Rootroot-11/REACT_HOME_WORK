@@ -66,7 +66,7 @@ export default function App() {
 
             </div>
 
-            <Route path={'/movie/:id'} render={(props) => {
+            <Link path={'/movie/:id'} render={(props) => {
                 return <MoviesListCard {...props}/>
             }}/>
         </Router>
