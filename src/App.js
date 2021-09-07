@@ -49,27 +49,12 @@ export default function App() {
 
     return (
         <Router>
-            <div className={'App'}>
-                {
-                    users.map(value => <Movie key={value.id} value={value}/>)
 
-
-                }
-
-                <div>
-                    Genres of Movies:
-                    {
-                        genres.map((genre, i) => <i key={genre?.id || i}> - {genre?.name} -</i>)
-
-                    }
-                </div>
-
-
-
+        <div>
             <Link to={'/movies/' + value.id}> <Link/>
-
+        </div>
                 <Route path={'/movies'} component={Users}/>
-            </div>
+
         </Router>
 
 );
