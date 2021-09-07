@@ -2,33 +2,59 @@ import {useEffect, useState} from "react";
 import {discoverGenre, discoverMovie} from "./services/service.api/movieService";
 import {useDispatch, useSelector} from "react-redux";
 import {fetchingGenres, fetchUsers} from "./redux/actions/actions";
-import MoviesListCard from "./components/MoviesPage/MoviesPage";
-
-import {BrowserRouter as Router, Link, Route,} from "react-router-dom";
-import Movies from "./components/MoviesPage/Movies";
+// import {Movie} from "./components/selectedMovie/SelectedMovie";
 
 // import './App.css'
 
 export default function App() {
+    const [currentPage, setCurrentPage] = useState(1);
+    const [fetching, setFetching] = useState(true)
 
-    // const [currentPage, setCurrentPage] = useState(1);
-    // const [fetching, setFetching] = useState(true)
-    //
-    // let {users} = useSelector(({rootReducer}) => rootReducer);
-    // let {genres} = useSelector(({genresReducer}) => genresReducer);
-    //
-    // let dispatch = useDispatch();
+    let {users} = useSelector(({rootReducer}) => rootReducer);
+    let {genres} = useSelector(({genresReducer}) => genresReducer);
+
+    let dispatch = useDispatch();
+
+    useEffect(() => {
+        discoverMovie().then(value => {
+            dispatch(fetchUsers(value.data));
+        });
+    }, [dispatch])
 
 
+    useEffect((genres) => {
+        discoverGenre().then(value => {
+            dispatch(fetchingGenres(value.data));
+        })
+    }, [dispatch])
+
+    useEffect(() => {
+        if (fetching) {
+            discoverMovie(currentPage).then(value => {
+                dispatch(fetchUsers(value.data))
+                setCurrentPage(prevState => prevState + 1)
+            })
+                .finally(() => setFetching(false));
+        }
+        if (!genres) {
+            discoverGenre().then(value => dispatch(fetchingGenres(value.data)))
+        }
+    }, [dispatch, fetching, genres]);
     return (
-        <Router>
-
+        <div>
+            {
+                users.map(value => < div key={value.id} value={value}></div>)
+            }
             <div>
-                <Link to={'/movies/'}> </Link>
+                Genres of Movies:
+                {
+                    genres.map((genre, i) => <i key={genre?.id || i}> - {genre?.name} -</i>)
+
+                }
             </div>
-            <Route path={'/movies'} component={Movies}/>
 
-        </Router>
 
-);
+        </div>
+
+    );
 }
