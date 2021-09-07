@@ -4,11 +4,8 @@ import {useDispatch, useSelector} from "react-redux";
 import {fetchingGenres, fetchUsers} from "./redux/actions/actions";
 import MoviesListCard from "./components/MoviesPage/MoviesPage";
 
-import {
-    BrowserRouter as Router,
-    Route,
-    Link,
-} from "react-router-dom";
+import {BrowserRouter as Router, Route,} from "react-router-dom";
+import {Movie} from "./components/MovieInfoPage/MovieInfoPage";
 
 // import './App.css'
 
@@ -47,40 +44,17 @@ export default function App() {
         if (!genres) {
             discoverGenre().then(value => dispatch(fetchingGenres(value.data)))
         }
-    }, [fetching]);
-
-    // useEffect(() => {
-    //     document.addEventListener('scroll', scrollHandler)
-    //
-    //     return function () {
-    //         document.removeEventListener('scroll', scrollHandler)
-    //     };
-    // }, []);
+    }, [dispatch, fetching, genres]);
 
 
     return (
         <Router>
             <div className={'App'}>
                 {
-                   users && users.map((value) => <div key={value.id}>
-                        <h3>ID</h3> {value.id}
-                        <h3>Original language</h3> {value.original_language}
-                        <h3>Original title</h3> {value.original_title}
-                        <h3>Overview</h3> {value.overview}
-                        <h3>Popularity</h3> {value.popularity}
-                        <h3>Release date</h3> {value.release_date}
-                        <img src={`https://image.tmdb.org/t/p/w200${value.poster_path}`} alt={`${value.original_title}`}/>
+                    users.map(value => <Movie key={value.id} value={value}/>)
 
 
-                        <h3>Genres</h3> {value.genre_ids}
-
-
-                        <hr/>
-                        <br/>
-
-                    </div>)
                 }
-
 
                 <div>
                     Genres of Movies:
@@ -92,7 +66,7 @@ export default function App() {
 
             </div>
 
-            <Route path={'/movie/:id'} render={(props)=>{
+            <Route path={'/movie/:id'} render={(props) => {
                 return <MoviesListCard {...props}/>
             }}/>
         </Router>
