@@ -6,45 +6,19 @@ import MoviesListCard from "./components/MoviesPage/MoviesPage";
 
 import {BrowserRouter as Router, Link, Route,} from "react-router-dom";
 import {Movie} from "./components/MovieInfoPage/MovieInfoPage";
+import MoviesInfo from "./components/MoviesPage/Movies";
 
 // import './App.css'
 
 export default function App() {
 
-    const [currentPage, setCurrentPage] = useState(1);
-    const [fetching, setFetching] = useState(true)
-
-    let {users} = useSelector(({rootReducer}) => rootReducer);
-    let {genres} = useSelector(({genresReducer}) => genresReducer);
-
-    let dispatch = useDispatch();
-
-
-    useEffect(() => {
-        discoverMovie().then(value => {
-            dispatch(fetchUsers(value.data));
-        });
-    }, [dispatch])
-
-
-    useEffect((genres) => {
-        discoverGenre().then(value => {
-            dispatch(fetchingGenres(value.data));
-        })
-    }, [dispatch])
-
-    useEffect(() => {
-        if (fetching) {
-            discoverMovie(currentPage).then(value => {
-                dispatch(fetchUsers(value.data))
-                setCurrentPage(prevState => prevState + 1)
-            })
-                .finally(() => setFetching(false));
-        }
-        if (!genres) {
-            discoverGenre().then(value => dispatch(fetchingGenres(value.data)))
-        }
-    }, [dispatch, fetching, genres]);
+    // const [currentPage, setCurrentPage] = useState(1);
+    // const [fetching, setFetching] = useState(true)
+    //
+    // let {users} = useSelector(({rootReducer}) => rootReducer);
+    // let {genres} = useSelector(({genresReducer}) => genresReducer);
+    //
+    // let dispatch = useDispatch();
 
 
     return (
@@ -53,7 +27,7 @@ export default function App() {
             <div>
                 <Link to={'/movies/' + value.id}> </Link>
             </div>
-            <Route path={'/movies'} component={Movies}/>
+            <Route path={'/movies'} component={MoviesInfo}/>
 
         </Router>
 
