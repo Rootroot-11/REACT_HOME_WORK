@@ -6,7 +6,8 @@ import {
     BrowserRouter as Router, Link,
     Route, Switch
 } from "react-router-dom";
-import MovieDetails from "./components/Movie_Details/MovieDetails";
+
+import {Movie} from "./components/Movie/Movie";
 import Movies from "./components/MoviesPage/Movies";
 
 // import './App.css'
@@ -75,9 +76,12 @@ export default function App({value}) {
 
             </div>
             <Switch>
+
                 <Link to={{pathname: '/movies/'}}><h2>{value}</h2></Link>
+                <Route path={'/movies/'} component = {Movies}/>
 
                 <Link to={{pathname: '/movie'}}><h2>{value}</h2></Link>
+                <Route path={'/movie'} component={Movie}/>
 
             </Switch>
 
