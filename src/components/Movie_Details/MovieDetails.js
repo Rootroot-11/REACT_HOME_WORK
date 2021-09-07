@@ -1,21 +1,27 @@
 import {useEffect, useState} from "react";
 import {useLocation} from "react-router";
-import {discoverMovie} from "../../services/service.api/movieService";
+import {discoverMovie, getMovieByid} from "../../services/service.api/movieService";
+import {Route, Router} from "react-router-dom";
 
 export default function MovieDetails ({ match: { params:{ id } } })  {
     // const {state} = useLocation();
-    const [user, setUser] = useState({});
+    const [movieByID, setMovieByid] = useState({});
     useEffect(()=>{
-        discoverMovie(id).then(value => setUser({...value}));
+        getMovieByid(id).then(value => setMovieByid({...value.data}));
     },[id]);
-    return(
 
+    document.body.style.backgroundImage = `url(https://image.tmdb.org/t/p/w500${movieByID.backdrop_path})`
+    return(
+        <Router>
         <div>
 
-            {JSON.stringify(user)}
-            {/*{JSON.stringify(state)}*/}
+            <Route exact path={'/movies/'} component={MovieDetails}/>
+            <h1>{movieByID.title}</h1>
+            <img src={`https://image.tmdb.org/t/p/w500${movieByID.poster_path}`} alt='Poster'/>
+            <p>FJDIVJCVJ</p>
 
         </div>
+        </Router>
     );
 }
 
