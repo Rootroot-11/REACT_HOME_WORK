@@ -51,9 +51,9 @@ export default function App() {
         <Router>
 
             <div>
-                <Link to={'/movies/' + value.id}> <Link/>
+                <Link to={'/movies/' + value.id}> </Link>
             </div>
-            <Route path={'/movies'} component={Users}/>
+            <Route path={'/movies'} component={Movies}/>
 
         </Router>
 
