@@ -4,7 +4,7 @@ import {useDispatch, useSelector} from "react-redux";
 import {fetchingGenres, fetchUsers} from "./redux/actions/actions";
 import MoviesListCard from "./components/MoviesPage/MoviesPage";
 
-import {BrowserRouter as Router, Route,} from "react-router-dom";
+import {BrowserRouter as Router, Link, Route,} from "react-router-dom";
 import {Movie} from "./components/MovieInfoPage/MovieInfoPage";
 
 // import './App.css'
@@ -66,9 +66,8 @@ export default function App() {
 
             </div>
 
-            <Link path={'/movie/:id'} render={(props) => {
-                return <MoviesListCard {...props}/>
-            }}/>
+            <Link to={'/movies/' + value.id} > <Link/>
+
         </Router>
 
     );
