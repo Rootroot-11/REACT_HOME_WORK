@@ -64,11 +64,12 @@ export default function App() {
                     }
                 </div>
 
+
+
+            <Link to={'/movies/' + value.id}> <Link/>
+
             </div>
-
-            <Link to={'/movies/' + value.id} > <Link/>
-
         </Router>
 
-    );
+);
 }
