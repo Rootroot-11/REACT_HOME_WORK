@@ -68,6 +68,7 @@ export default function App() {
 
             <Link to={'/movies/' + value.id}> <Link/>
 
+                <Route path={'/movies'} component={Users}/>
             </div>
         </Router>
 
