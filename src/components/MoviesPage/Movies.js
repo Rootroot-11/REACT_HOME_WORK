@@ -4,6 +4,7 @@ import {useDispatch, useSelector} from "react-redux";
 import {discoverGenre, discoverMovie} from "../../services/service.api/movieService";
 import {fetchingGenres, fetchUsers} from "../../redux/actions/actions";
 import MovieDetails from "../Movie_Details/MovieDetails";
+import {Movie} from "../selectedMovie/SelectedMovie";
 
 export default function Movies({props}) {
     const [currentPage, setCurrentPage] = useState(1);
