@@ -5,9 +5,10 @@ import {discoverGenre, discoverMovie} from "../../services/service.api/movieServ
 import {fetchingGenres, fetchUsers} from "../../redux/actions/actions";
 import MovieDetails from "../Movie_Details/MovieDetails";
 
-export default function MoviesInfo() {
+export default function Movies({props}) {
     const [currentPage, setCurrentPage] = useState(1);
     const [fetching, setFetching] = useState(true);
+    const { match: { url }, history } = props;
 
     let {users} = useSelector(({rootReducer}) => rootReducer);
     let {genres} = useSelector(({genresReducer}) => genresReducer);

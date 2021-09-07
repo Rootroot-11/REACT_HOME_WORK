@@ -5,8 +5,7 @@ import {fetchingGenres, fetchUsers} from "./redux/actions/actions";
 import MoviesListCard from "./components/MoviesPage/MoviesPage";
 
 import {BrowserRouter as Router, Link, Route,} from "react-router-dom";
-import {Movie} from "./components/MovieInfoPage/MovieInfoPage";
-import MoviesInfo from "./components/MoviesPage/Movies";
+import Movies from "./components/MoviesPage/Movies";
 
 // import './App.css'
 
@@ -27,7 +26,7 @@ export default function App() {
             <div>
                 <Link to={'/movies/' + value.id}> </Link>
             </div>
-            <Route path={'/movies'} component={MoviesInfo}/>
+            <Route path={'/movies'} component={Movies}/>
 
         </Router>
 
