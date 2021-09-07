@@ -3,6 +3,7 @@ import {Route} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
 import {discoverGenre, discoverMovie} from "../../services/service.api/movieService";
 import {fetchingGenres, fetchUsers} from "../../redux/actions/actions";
+import MovieDetails from "../Movie_Details/MovieDetails";
 
 export default function MoviesInfo() {
     const [currentPage, setCurrentPage] = useState(1);
@@ -46,7 +47,7 @@ export default function MoviesInfo() {
                 users.map(value => <Movie key={value.id} value={value}/>)
             }
 
-            <Route exact path={`${url}/:id`} component={UserDetails}/>
+            <Route exact path={`${url}/:id`} component={MovieDetails}/>
         </div>
     );
 }
