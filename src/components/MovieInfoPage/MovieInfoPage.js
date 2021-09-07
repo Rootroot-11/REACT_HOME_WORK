@@ -5,7 +5,7 @@ import {
 } from "react-router-dom";
 import {useSelector} from "react-redux";
 
-export const Movie = ({value}) => {
+export const Movie_Details ({value}) => {
     const {genres} = useSelector(({genresReducer}) => genresReducer)
 
     const genresForOneMovie = value.genre_ids.map(value => genres?.find(genre => genre.id === value));
