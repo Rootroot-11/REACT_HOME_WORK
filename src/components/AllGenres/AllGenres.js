@@ -1,14 +1,10 @@
-export default function AllGenres({genres}) {
+export default function GenreBadge({array}) {
 
     return (
-
         <div>
             Genres:
             {
-                genres.map((value) => <div>
-                    <h3>ID</h3> {value.id}
-                </div>
-                )
+                array && array.map((genre, i) => <i key={genre?.id || i}> - {genre?.name} -</i>)
             }
         </div>
     );

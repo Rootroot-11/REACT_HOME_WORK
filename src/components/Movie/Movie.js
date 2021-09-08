@@ -8,12 +8,13 @@ export const Movie = ({item, history, value}) => {
     };
 
     return (
-        <div>
+        <div className={'Movie'}>
             <div>
 
-                <Link to={{pathname: '/movies/' + value.id}}><h3>{value.title} - <img
+                <Link to={{pathname: '/movies/' + value.id}}><h3> {<img
                     src={`https://image.tmdb.org/t/p/w200${value.poster_path}`}
-                    alt={`${value.original_title}`}/></h3></Link>
+                    alt={`${value.original_title}`}/>} {value.title}</h3>
+                </Link>
 
             </div>
         </div>
