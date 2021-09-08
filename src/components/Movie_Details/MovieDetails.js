@@ -1,6 +1,6 @@
 import { useLocation } from "react-router";
 
-export default function MovieDetails({users}) {
+export default function MovieDetails({ match: { params:{ id } } }) {
 
     const {state} = useLocation();
 
