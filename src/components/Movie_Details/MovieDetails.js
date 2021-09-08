@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { getMovieById } from "../../services/service.api/movieService";
-import GenreBadge from "../AllGenres/AllGenres";
+import AllGenres from "../AllGenres/AllGenres";
 
 export default function MovieDetails({ match: { params:{ id } } }) {
 
@@ -20,11 +20,8 @@ export default function MovieDetails({ match: { params:{ id } } }) {
                     <h3>{movieByID.original_overview}</h3>
                     <h3>{movieByID.popularity}</h3>
                     <h3>{movieByID.release_date}</h3>
-                    <h3><GenreBadge array={movieByID.genres}/></h3>
+                    <h3><AllGenres genres_array={movieByID.genres}/></h3>
                 </div>
-
-            {/*{JSON.stringify(user)}*/}
-
 
         </div>
     );

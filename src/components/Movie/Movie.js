@@ -1,11 +1,8 @@
 import {Link} from "react-router-dom";
 
 
-export const Movie = ({item, history, value}) => {
+export const Movie = ({value}) => {
 
-    let navigate = () => {
-        history.push('/users/' + item.id, value)
-    };
 
     return (
         <div className={'Movie'}>
