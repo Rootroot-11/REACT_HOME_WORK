@@ -1,8 +1,13 @@
 import { useLocation } from "react-router";
+import {useEffect} from "react";
+import {discoverMovie} from "../../services/service.api/movieService";
 
 export default function MovieDetails({ match: { params:{ id } } }) {
 
-    const {state} = useLocation();
+
+    useEffect(()=>{
+        discoverMovie(id).then(value => setUser({...value}));
+    },[id]);
 
     return (
         <div>
