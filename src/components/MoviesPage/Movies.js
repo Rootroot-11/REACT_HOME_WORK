@@ -1,8 +1,8 @@
 import { useState } from "react";
 import {useDispatch, useSelector} from "react-redux";
-import {discoverGenre, discoverMovie} from "../../services/service.api/movieService";
-import {fetchingGenres, fetchUsers} from "../../redux/actions/actions";
 import {Movie} from "../Movie/Movie";
+import {Route} from "react-router-dom";
+import MovieDetails from "../Movie_Details/MovieDetails";
 
 export default function Movies() {
     const [currentPage, setCurrentPage] = useState(1);
@@ -20,7 +20,8 @@ export default function Movies() {
             {
                 users.map(value => <Movie key={value.id} value={value}/>)
             }
+            {  <Route exact path={/:id`} component={MovieDetails}/>}
 
-        </div>
+                </div>
     );
 }
