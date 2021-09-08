@@ -53,9 +53,7 @@ export default function App({ value, history }) {
                         <h3>Genres</h3> {value.genre_ids}
                         <br/>
                         <br/>
-                        <button onClick={navigate}>Movie info</button>
-                        <hr/>
-                        <br/>
+
                     </div>)}
 
                 <div>
