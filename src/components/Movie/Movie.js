@@ -1,6 +1,5 @@
+import {Link} from "react-router-dom";
 
-import {Link, Route} from "react-router-dom";
-import MovieDetails from "../Movie_Details/MovieDetails";
 
 export const Movie = ({item, history, value}) => {
 
@@ -9,12 +8,13 @@ export const Movie = ({item, history, value}) => {
     };
 
     return (
-        <div className={'Movie'}>
-            <div className={'Movie-box'}>
+        <div>
+            <div>
 
-                <Link to={{pathname: '/movies/' + value.id}}><h3>{value.title}</h3></Link>
+                <Link to={{pathname: '/movies/' + value.id}}><h3>{value.title} - <img
+                    src={`https://image.tmdb.org/t/p/w200${value.poster_path}`}
+                    alt={`${value.original_title}`}/></h3></Link>
 
-                {/*<Route path={'/movies/' + item.id} component={MovieDetails}/>*/}
             </div>
         </div>
     )

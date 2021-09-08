@@ -1,25 +1,21 @@
-import {useEffect, useState} from "react";
-import {discoverGenre, discoverMovie} from "./services/service.api/movieService";
-import {useDispatch, useSelector} from "react-redux";
-import {fetchingGenres, fetchUsers} from "./redux/actions/actions";
-import {
-    BrowserRouter as Router,
-    Route, Switch
-} from "react-router-dom";
-
+import { useEffect, useState } from "react";
+import { discoverGenre, discoverMovie } from "./services/service.api/movieService";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchingGenres, fetchUsers } from "./redux/actions/actions";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Movies from "./components/MoviesPage/Movies";
 import MovieDetails from "./components/Movie_Details/MovieDetails";
-import {Redirect} from "react-router";
-import {Movie} from "./components/Movie/Movie";
+import { Redirect } from "react-router";
 
-// import './App.css'
 
-export default function App({value, history}) {
+import './App.css'
+
+export default function App({ value, history }) {
     const [currentPage, setCurrentPage] = useState(1);
     const [fetching, setFetching] = useState(true)
 
-    let {users} = useSelector(({rootReducer}) => rootReducer);
-    let {genres} = useSelector(({genresReducer}) => genresReducer);
+    let {users} = useSelector(({ rootReducer }) => rootReducer);
+    let {genres} = useSelector(({ genresReducer }) => genresReducer);
 
     let dispatch = useDispatch();
 
@@ -36,18 +32,7 @@ export default function App({value, history}) {
         })
     }, [dispatch])
 
-    useEffect(() => {
-        if (fetching) {
-            discoverMovie(currentPage).then(value => {
-                dispatch(fetchUsers(value.data))
-                setCurrentPage(prevState => prevState + 1)
-            })
-                .finally(() => setFetching(false));
-        }
-        if (!genres) {
-            discoverGenre().then(value => dispatch(fetchingGenres(value.data)))
-        }
-    }, [dispatch, fetching, genres]);
+
     let navigate = () => {
         history.push('/users/' + value.id, value)
     };
