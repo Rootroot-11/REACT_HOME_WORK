@@ -14,6 +14,7 @@ export default function Movies(props) {
     let {users} = useSelector(({rootReducer}) => rootReducer);
     let {genres} = useSelector(({genresReducer}) => genresReducer);
 
+
     const dispatch = useDispatch();
     useEffect(() => {
         if (fetching) {
