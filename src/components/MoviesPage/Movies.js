@@ -1,8 +1,9 @@
 import {useEffect, useState} from "react";
-import {useDispatch, useSelector} from "react-redux";
-import {Movie} from "../Movie/Movie";
+import { useDispatch, useSelector } from "react-redux";
+import { Movie } from "../Movie/Movie";
 import {discoverGenre, discoverMovie} from "../../services/service.api/movieService";
 import {fetchingGenres, fetchUsers} from "../../redux/actions/actions";
+
 
 export default function Movies(props) {
     const {match: {url}, history} = props;
@@ -16,33 +17,19 @@ export default function Movies(props) {
 
 
     const dispatch = useDispatch();
-    useEffect(() => {
-        if (fetching) {
-            discoverMovie(currentPage).then(value => {
-                dispatch(fetchUsers(value.data))
-                setCurrentPage(prevState => prevState + 1)
-            })
-                .finally(() => {
-                    setFetching(false)
-                });
-        } else if (fetchingBack) {
-            discoverMovie(currentPage).then(value => {
-                dispatch(fetchUsers(value.data))
-                setCurrentPage(prevState => prevState - 1)
-            })
-                .finally(() => {
-                    setFetchingBack(false)
-                });
-        } else {
-            discoverMovie(currentPage).then(value => {
-                dispatch(fetchUsers(value.data))
-            })
-        }
-        if (!genres) {
-            discoverGenre().then(value => dispatch(fetchingGenres(value.data)))
-        }
-    }, [fetching, fetchingBack, genres, dispatch]);
 
+    useEffect(() => {
+        discoverMovie().then(value => {
+            dispatch(fetchUsers(value.data));
+        });
+    }, [dispatch])
+
+
+    useEffect((genres) => {
+        discoverGenre().then(value => {
+            dispatch(fetchingGenres(value.data));
+        })
+    }, [dispatch])
 
     return (
 
@@ -54,4 +41,5 @@ export default function Movies(props) {
 
         </div>
     );
+
 }

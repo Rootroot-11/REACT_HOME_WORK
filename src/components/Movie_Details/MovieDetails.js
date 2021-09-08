@@ -1,10 +1,9 @@
-
-import {useEffect, useState} from "react";
-import {getMovieById} from "../../services/service.api/movieService";
+import { useEffect, useState } from "react";
+import { getMovieById } from "../../services/service.api/movieService";
 import GenreBadge from "../AllGenres/AllGenres";
 
 export default function MovieDetails({ match: { params:{ id } } }) {
-    // const [user, setUser] = useState([]);
+
     const [movieByID, setMovieById] = useState([]);
 
     useEffect(()=>{
@@ -17,7 +16,6 @@ export default function MovieDetails({ match: { params:{ id } } }) {
                     <h1>{movieByID.title}</h1>
                     <img src={`https://image.tmdb.org/t/p/w500${movieByID.poster_path}`} alt='Poster'
                          className={'Poster_m'}/>
-                    
                     <h3>{movieByID.original_language}</h3>
                     <h3>{movieByID.original_overview}</h3>
                     <h3>{movieByID.popularity}</h3>
