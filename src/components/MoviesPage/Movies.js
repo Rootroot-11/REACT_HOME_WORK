@@ -6,7 +6,7 @@ import MovieDetails from "../Movie_Details/MovieDetails";
 
 export default function Movies(props) {
     const {match: {url}, history} = props;
-}
+
 const [currentPage, setCurrentPage] = useState(1);
 const [fetching, setFetching] = useState(true)
 
@@ -25,6 +25,6 @@ return (
         <Route exact path={`${url}/:id`} component={MovieDetails}/>
 
     </div>
+    );
 
-);
 }
