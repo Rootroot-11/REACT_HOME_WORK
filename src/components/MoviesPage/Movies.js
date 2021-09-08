@@ -1,8 +1,6 @@
 import {useEffect, useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {Movie} from "../Movie/Movie";
-import {Route, Router} from "react-router-dom";
-import MovieDetails from "../Movie_Details/MovieDetails";
 import {discoverGenre, discoverMovie} from "../../services/service.api/movieService";
 import {fetchingGenres, fetchUsers} from "../../redux/actions/actions";
 
@@ -52,8 +50,6 @@ export default function Movies(props) {
             {
                 users.map(value => <Movie key={value.id} value={value}/>)
             }
-            <Route exact path={`${url}/:id`} component={MovieDetails}/>
-
 
         </div>
     );
