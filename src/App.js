@@ -1,8 +1,8 @@
-import {BrowserRouter as Router, Route, Switch} from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Movies from "./components/MoviesPage/Movies";
 import MovieDetails from "./components/Movie_Details/MovieDetails";
-import {Redirect} from "react-router";
 import './App.css'
+import {Redirect} from "react-router";
 
 export default function App() {
 
