@@ -4,8 +4,9 @@ export default function AllGenres({genres_array}) {
         <div>
             Genres:
             {
-                genres_array && genres_array.map((genre, i) => <i key={genre?.id || i}> - {genre?.name} -</i>)
+                genres_array && genres_array.map((genre, i) => <i key={genre?.id || i}>  {genre?.name}___</i>)
             }
         </div>
     );
+
 }

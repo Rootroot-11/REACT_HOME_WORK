@@ -8,8 +8,6 @@ import { fetchingGenres, fetchMovies } from "../../redux/actions/actions";
 export default function Movies() {
 
     let {users} = useSelector(({rootReducer}) => rootReducer);
-    let {genres} = useSelector(({genresReducer}) => genresReducer);
-
     const dispatch = useDispatch();
 
     useEffect(() => {
