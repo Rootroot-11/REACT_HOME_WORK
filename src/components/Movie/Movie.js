@@ -6,8 +6,8 @@ export const Movie = ({value}) => {
 
 
     return (
-        <div className={'Movie'}>
-            <div>
+        <div className={'Movie-box'}>
+            <div className={'box'}>
 
                 <Link to={{pathname: '/movies/' + value.id}}><h3> {<img
                     src={`https://image.tmdb.org/t/p/w200${value.poster_path}`}
