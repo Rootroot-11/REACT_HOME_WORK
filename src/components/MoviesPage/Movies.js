@@ -25,7 +25,7 @@ export default function Movies() {
 
     return (
 
-        <div>
+        <div className={'Movies'}>
             {
                 users.map(value => <Movie key={value.id} value={value}/>)
             }
