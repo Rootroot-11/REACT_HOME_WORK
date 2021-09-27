@@ -13,3 +13,4 @@ const getMovieById = async (movieId) => await instance.get(`/movie/${movieId}`);
 
 
 export {discoverMovie, discoverGenre, getMovieById};
+
