@@ -1,0 +1,11 @@
+div {
+    width: 400px;
+    background: silver;
+}
+
+.hide {
+    display: none;
+}
+.block {
+    display: block;
+}
