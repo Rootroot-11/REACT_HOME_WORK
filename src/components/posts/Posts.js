@@ -1,12 +1,13 @@
 import {useEffect, useState} from "react";
-import {getUsersPost} from "../../services/post.service";
 import Post from "../post/Post";
+import {getPostsofUser} from "../../services/post.service";
 
 export default function Posts() {
-    let [posts, setPosts] = useState([]);
-    let [post, setPost] = useState([]);
+
+    const [posts, setPosts] = useState([]);
+
     useEffect(() => {
-        getUsersPost().then(value => setPosts([...value]))
+        getPostsofUser().then(value => setPosts([...value]))
     }, []);
     return (
         <div>

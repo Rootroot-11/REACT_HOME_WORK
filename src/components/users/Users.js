@@ -4,8 +4,8 @@ import {getUsers} from "../../services/user.service";
 
 export default function Users() {
 
-    let [users, setUsers] = useState([]);
-    let [user, setUser] = useState(null);
+    const [users, setUsers] = useState([]);
+
     useEffect(() => {
         getUsers().then(value => setUsers([...value]))
     }, []);
