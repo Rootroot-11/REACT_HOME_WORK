@@ -1,25 +1,19 @@
-import logo from './logo.svg';
-import './App.css';
+// - Коротко : отримати всіх юзерів з плейсхолдеру, та відтворити на сторінці,
+//     отримати всі пости з плейсхолдеру, та відтворити на сторінці,
+//     отримати всі коментарії з плейсхолдеру, та відтворити на сторінці
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+import Users from "./components/users/Users";
+import Posts from "./components/posts/Posts";
+import Comments from "./components/comments/Comments";
+
+export default function App() {
+    return (
+        <div>
+            <Users/>
+
+            <Posts/>
+
+            <Comments/>
+        </div>
+    );
 }
-
-export default App;
