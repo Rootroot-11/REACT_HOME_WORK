@@ -4,8 +4,7 @@ import Comment from "../comment/Comment";
 
 export default function Comments(item) {
 
-    let [comments, setComments] = useState([]);
-    let [comment, setComment] = useState([]);
+    const [comments, setComments] = useState([]);
 
     useEffect(() => {
         getCommentsofUser().then(value => setComments([...value]))
