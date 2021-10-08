@@ -10,3 +10,4 @@ export const rootReducer = (state = {users: []}, action) => {
             return state;
     }
 }
+
