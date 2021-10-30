@@ -9,7 +9,7 @@ export default function StarsRating({item}) {
 
             <StarRatings
                 rating={vote_average / 2}
-                starRatedColor="orange"
+                starRatedColor="red"
                 starDimension="26px"
             />
 

@@ -4,7 +4,6 @@ import { Movie } from "../Movie/Movie";
 import { discoverGenre, discoverMovie } from "../../services/service.api/movieService";
 import { fetchingGenres, fetchMovies } from "../../redux/actions/actions";
 
-
 export default function Movies() {
 
     let {users} = useSelector(({rootReducer}) => rootReducer);
@@ -15,7 +14,6 @@ export default function Movies() {
             dispatch(fetchMovies(value.data));
         });
     }, [dispatch])
-
 
     useEffect((genres) => {
         discoverGenre().then(value => {
