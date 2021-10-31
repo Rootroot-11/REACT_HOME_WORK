@@ -1,8 +1,13 @@
 .App {
-    background-image: url('https://html5book.ru/wp-content/uploads/2015/06/background28.jpg');
+    background-color: greenyellow;
     display: flex;
     margin: 15px;
-    padding-top: 20px;
+    padding-top: 24px;
+
 }
 
-
+.up {
+    width: 30px;
+    height: 30px;
+    background: silver;
+}

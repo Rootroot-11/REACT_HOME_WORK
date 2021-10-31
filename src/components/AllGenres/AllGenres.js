@@ -1,5 +1,4 @@
 export default function AllGenres({ genres_array }) {
-
     return (
         <div>
             Genres:
