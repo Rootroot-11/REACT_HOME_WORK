@@ -14,3 +14,17 @@ const getMovieById = async (movieId) => await instance.get(`/movie/${movieId}`);
 
 export {discoverMovie, discoverGenre, getMovieById};
 
+// let config = {
+//     baseUrl: 'https://jsonplaceholder.typicode.com/users',
+// };
+//
+// let axiosInstance = axios.create(config);
+// const getUsers = () => {
+//     return axiosInstance.get();
+// };
+//
+// const getUser = (id) => {
+//     return axiosInstance().get(`/${id}`);
+// }
+//
+// export {getUsers, getUser};
