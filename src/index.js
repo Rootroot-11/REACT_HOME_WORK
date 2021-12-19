@@ -4,13 +4,15 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import {Provider} from "react-redux";
-import {createStore} from "redux";
+import {createStore, applyMiddleware} from "redux";
 import {ADD_USER, LOAD_USERS} from "./redux/actions";
+import ReduxThunk from "redux-thunk";
 
 let initialState = {users: []};
 const reducer = (state = initialState, action) => {
     switch (action.type) {
         case LOAD_USERS :
+            console.log(action);
             // action.payload - we will get from useEffect->service->jph
             return {...state, users: [...action.payload]}
         case ADD_USER:
@@ -21,13 +23,14 @@ const reducer = (state = initialState, action) => {
             return state;
     }
 }
-let store = createStore(reducer);
+let store = createStore(reducer, applyMiddleware(ReduxThunk));
 
 
 ReactDOM.render(
     <React.StrictMode>
-        <Provider store={store}/>
+        <Provider store={store}>
         <App/>
+        </Provider>
     </React.StrictMode>,
     document.getElementById('root')
 );
