@@ -1,25 +1,36 @@
-import logo from './logo.svg';
-import './App.css';
+import {useDispatch, useSelector} from "react-redux";
+import {useEffect} from "react";
+import {addUser, loadUsers} from "./redux/actionCreators";
+import {getUsers, saveUser} from "./services/api.service";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+
+
+
+export default function App() {
+
+    let state = useSelector(state => state);
+    let dispatch = useDispatch();
+    let {users} = state;
+
+    useEffect(() => {
+        getUsers().then(value => {
+            console.log(value);
+            dispatch(loadUsers(value));
+        });
+    }, []);
+
+    let handleAddUser = async (e) => {
+        let user = {name: 'vasysa'}
+        saveUser(dispatch, user);
+    };
+    return (
+        <div>
+
+            <button onClick={handleAddUser}> add user</button>
+
+            {users.map(value => <div>{value.name}</div>)}
+
+
+        </div>
+    );
 }
-
-export default App;
