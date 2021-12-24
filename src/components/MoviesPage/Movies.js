@@ -5,6 +5,7 @@ import {discoverGenre, discoverMovie} from "../../services/service.api/movieServ
 import {fetchingGenres, fetchMovies} from "../../redux/actions/actions";
 import './Movies.css';
 import {MoviesWrapper} from "./styled";
+import {Pagination} from "../../common";
 
 export default function Movies() {
 
@@ -30,6 +31,8 @@ export default function Movies() {
                 {
                     users.map(value => <Movie key={value.id} value={value}/>)
                 }
+
+                <Pagination/>
             </MoviesWrapper>
 
         </div>

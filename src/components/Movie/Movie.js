@@ -1,6 +1,5 @@
 import {Link} from "react-router-dom";
 import StarsRating from "../StarsRating/StarsRating";
-import {Pagination} from "../../common";
 
 export const Movie = ({value}) => {
     return (
@@ -12,7 +11,6 @@ export const Movie = ({value}) => {
                     alt={`${value.original_title}`}/>} {value.title}</h3>
                 </Link>
                 <div><StarsRating item={value}/></div>
-                    <Pagination/>
             </div>
         </div>
     )
