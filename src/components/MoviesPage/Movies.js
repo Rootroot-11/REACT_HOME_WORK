@@ -4,6 +4,7 @@ import {Movie} from "../Movie/Movie";
 import {discoverGenre, discoverMovie} from "../../services/service.api/movieService";
 import {fetchingGenres, fetchMovies} from "../../redux/actions/actions";
 import './Movies.css';
+import {MoviesWrapper} from "./styled";
 
 export default function Movies() {
 
@@ -25,18 +26,12 @@ export default function Movies() {
     return (
 
         <div>
-            <ul>
-                <li id="start"></li>
-            </ul>
-            {
-                users.map(value => <Movie key={value.id} value={value}/>)
-            }
-            <div>
-                <a href="#start"><i></i></a>
-                <img className={'image'}
-                     src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRYmoxMIfD17ec4sFJkleK4K_lB4QA6MZBRU3mkzNiRjBYbvKRr6SLZCuffw72GUjSk1Fo&usqp=CAU"
-                     alt=""/>
-            </div>
+            <MoviesWrapper>
+                {
+                    users.map(value => <Movie key={value.id} value={value}/>)
+                }
+            </MoviesWrapper>
+
         </div>
     );
 
