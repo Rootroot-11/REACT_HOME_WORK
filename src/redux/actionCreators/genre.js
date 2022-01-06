@@ -4,7 +4,6 @@ import {
     SET_LOADING_GENRES,
     TOGGLE_SEARCH_MOVIE_GENRE
 } from "../actionTypes";
-import {genresAPI} from "../../services";
 
 const setGenres = payload => ({type: SET_GENRES, payload});
 const toggleSearchMovieGenre = payload => ({type: TOGGLE_SEARCH_MOVIE_GENRE, payload});

@@ -3,7 +3,6 @@ import {getMovieById} from "../../services/service.api/movieService";
 import AllGenres from "../AllGenres/AllGenres";
 
 export default function MovieDetails({match: {params: {id}}}) {
-
     const [movieByID, setMovieById] = useState([]);
 
     useEffect(() => {
@@ -22,9 +21,7 @@ export default function MovieDetails({match: {params: {id}}}) {
                 <h3>Release date: {movieByID.release_date}</h3>
                 <h3><AllGenres genres_array={movieByID.genres}/></h3>
                 <h3>Vote count: {movieByID.vote_count}</h3>
-
             </div>
-
         </div>
     );
 
