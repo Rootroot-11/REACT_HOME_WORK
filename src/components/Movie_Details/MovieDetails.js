@@ -1,5 +1,5 @@
 import {useEffect, useState} from "react";
-import {getMovieById} from "../../services/service.api/movieService";
+import {getMovieById, getMovieLists} from "../../services/service.api/movieService";
 import AllGenres from "../AllGenres/AllGenres";
 
 export default function MovieDetails({match: {params: {id}}}) {
@@ -9,6 +9,9 @@ export default function MovieDetails({match: {params: {id}}}) {
         getMovieById(id).then(value => setMovieById({...value.data}));
     }, [id]);
 
+    useEffect(() => {
+        getMovieLists(id).then(value => console.log(value));
+    },[id]);
     return (
         <div>
             <div>

@@ -44,50 +44,6 @@ const LogoText = styled.p`
   }
 `;
 
-const SearchBlock = styled.div`
-  display: flex;
-  justify-content: space-between;
-  width: 300px;
-  height: 30px;
-  border-radius: 50px;
-  background-color: ${props => (props.theme === true) ? theme.white : 'rgba(247, 246, 246, 0.47)'};
-  border: ${props => (props.theme === true) ? '0' : '1px solid #e7e7e7'}; 
-  padding: 3px 10px;
-  margin-right: 8px;
-  input {
-    background-color: transparent;
-    outline: none;
-    border: none;
-    width: 90%;
-    border-radius: inherit;
-    padding: 0 5px;
-    
-    @media (max-width: 435px){
-      font-size: 13px;
-    }
-  }
-  button {
-    outline: none;
-    border: none;
-    background-color: transparent;
-    color: #494949;
-    cursor: pointer;
-  }
-  
-  @media (max-width: 800px){
-    width: 250px;
-  }
-  @media (max-width: 435px){
-    width: 200px;
-  }
-  @media (max-width: 380px){
-    width: 170px;
-  }
-  @media (max-width: 330px){
-    width: 140px;
-  }
-`;
-
 const Row = styled.div`
   display: flex;
   align-items: center;
@@ -111,5 +67,5 @@ const Row = styled.div`
 
 export {
     HeaderWrapper, HeaderContent, LogoWrapper, LogoText
-    , SearchBlock, Row
+    , Row
 }

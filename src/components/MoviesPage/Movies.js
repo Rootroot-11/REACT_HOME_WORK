@@ -1,41 +1,54 @@
-import {useEffect} from "react";
+import {useEffect, useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {Movie} from "../Movie/Movie";
 import {discoverGenre, discoverMovie} from "../../services/service.api/movieService";
 import {getGenres, getMovies} from "../../redux/actions/actions";
 import './Movies.css';
 import {MoviesWrapper} from "./styled";
-import {Pagination} from "../../common";
+import Header from "../header/Header";
+import {Footer} from "../Footer/Footer";
 
 export default function Movies() {
 
     let {users} = useSelector(({rootReducer}) => rootReducer);
     const dispatch = useDispatch();
+    const [totalPages, setTotalPages] = useState(0);
+    const [page, setPage] = useState(1);
 
     useEffect(() => {
-        discoverMovie().then(value => {
+        discoverMovie(page,4).then(value => {
             dispatch(getMovies(value.data));
+            setTotalPages(value.total_pages)
         });
-    }, [dispatch])
+    }, [page])
+
+    const paginationHandler = (num) => {
+        setPage(page + num)
+    };
 
     useEffect((genres) => {
         discoverGenre().then(value => {
             dispatch(getGenres(value.data));
         })
-    }, [dispatch])
+    }, [dispatch]);
+
+    const [value, setValue] = useState('');
+    const filteredMovies = users.filter(user => {
+        return user.title.toLowerCase().includes(value.toLowerCase())
+    });
 
     return (
-
         <div>
+            <Header setValue={setValue}/>
             <MoviesWrapper>
                 {
-                    users.map(value => <Movie key={value.id} value={value}/>)
+                    filteredMovies.map(value => <Movie key={value.id} value={value}/>)
                 }
-
-                <Pagination/>
             </MoviesWrapper>
-
+            <Footer
+                totalPages={totalPages}
+                page={page}
+                paginationHandler={paginationHandler}/>
         </div>
     );
-
 }

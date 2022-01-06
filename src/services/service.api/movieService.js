@@ -7,24 +7,9 @@ const instance = axios.create({
     }
 });
 
-const discoverMovie = async () => await instance.get('discover/movie');
+const discoverMovie = async (page, limit) => await instance.get(`discover/movie?page=${page}&size=${limit}`);
 const discoverGenre = async () => await instance.get('genre/movie/list');
 const getMovieById = async (movieId) => await instance.get(`/movie/${movieId}`);
+const getMovieLists = async (movieId) => await instance.get(`/movie/${movieId}/lists`);
 
-
-export {discoverMovie, discoverGenre, getMovieById};
-
-// let config = {
-//     baseUrl: 'https://jsonplaceholder.typicode.com/users',
-// };
-//
-// let axiosInstance = axios.create(config);
-// const getUsers = () => {
-//     return axiosInstance.get();
-// };
-//
-// const getUser = (id) => {
-//     return axiosInstance().get(`/${id}`);
-// }
-//
-// export {getUsers, getUser};
+export {discoverMovie, discoverGenre, getMovieById, getMovieLists};
